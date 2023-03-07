@@ -1,0 +1,42 @@
+.home {
+    .container {
+        position: relative;
+        background-color: #152b60;
+    }
+
+    .container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        opacity: 0.1;
+    }
+
+    .text-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .text-overlay h2,
+    .text-overlay p {
+        color: #fff;
+    }
+
+
+    .responsive-map {
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+        height: 0;
+    }
+
+    .responsive-map iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+}
