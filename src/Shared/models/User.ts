@@ -6,8 +6,6 @@ import AppStore from "../stores/AppStore";
 export class UserModel implements IUser {
     uid: string;
     fullName: string;
-    phone: string;
-    location: string;
     email: string;
     password: string;
     role: IUserRole;
@@ -16,11 +14,9 @@ export class UserModel implements IUser {
         makeAutoObservable(this)
         this.uid = user.uid;
         this.fullName = user.fullName;
-        this.location = user.location;
         this.password = `${user.password}`;
         this.email = `${user.email}`;
         this.role = user.role
-        this.phone = user.phone;
 
     }
 
@@ -29,11 +25,9 @@ export class UserModel implements IUser {
         return {
             uid: this.uid,
             fullName: this.fullName,
-            location: this.location,
             password: this.password,
             email: this.email,
             role: this.role,
-            phone: this.phone
         }
     }
 

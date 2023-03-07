@@ -17,6 +17,8 @@ import AppStore from './Shared/stores/AppStore';
 import { AppApi } from './Shared/Apis/AppApi';
 import { AppContext } from './components/Context';
 import { AnimatePresence } from 'framer-motion';
+import { CreateAccoount } from './components/sub_components/createAccount/createAccount';
+import { Login } from './components/sub_components/login/login';
 
 
 const store = new AppStore();
@@ -52,6 +54,8 @@ export const Routing = () => {
         <Route path="/trinity" element={<Trinity />} />
         <Route path="/store" element={<Store />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/create" element={<CreateAccoount />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </AnimatePresence>
 

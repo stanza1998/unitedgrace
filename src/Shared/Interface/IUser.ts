@@ -2,10 +2,8 @@ import React from "react"
 
 
 export const defaultUser: IUser = {
-    uid:"",
+    uid: "",
     fullName: "",
-    phone: "",
-    location: "",
     email: "",
     password: "",
     role: {
@@ -22,10 +20,8 @@ export interface IUserRole {
 }
 
 export interface IUser {
-    uid:string
+    uid: string
     fullName: string;
-    phone: string;
-    location: string;
     email: string;
     password?: string;
     role: IUserRole | any

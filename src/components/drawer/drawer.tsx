@@ -31,6 +31,8 @@ import { Footer } from '../footer/footer';
 import { Routing } from '../../App';
 import { useAppContext } from '../Context';
 import { useNavigate } from 'react-router-dom';
+import LoginIcon from '@mui/icons-material/Login';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 
@@ -146,6 +148,14 @@ export default function MiniDrawer() {
     window.scroll(0, 0)
     navigate("/contact")
   }
+  const create = () => {
+    window.scroll(0, 0)
+    navigate("/create")
+  }
+  const login = () => {
+    window.scroll(0, 0)
+    navigate("/login")
+  }
 
 
 
@@ -186,7 +196,7 @@ export default function MiniDrawer() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List style={{ marginTop: "7rem" }}>
+        <List style={{ marginTop: "5rem" }}>
           <Tooltip title="Home" placement="right-start">
             <ListItem disablePadding sx={{ display: 'block' }}>
               <ListItemButton onClick={home}
@@ -338,6 +348,50 @@ export default function MiniDrawer() {
                   <CallIcon style={{ color: "000" }} />
                 </ListItemIcon>
                 <ListItemText style={{ color: "#000" }} primary="Contact Us" sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+          </Tooltip>
+          <Tooltip title="Create Account" placement="right-start">
+            <ListItem disablePadding sx={{ display: 'block' }}>
+              <ListItemButton onClick={create}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <AccountCircleIcon style={{ color: "000" }} />
+                </ListItemIcon>
+                <ListItemText style={{ color: "#000" }} primary="Create Account" sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+          </Tooltip>
+          <Tooltip title="Login" placement="right-start">
+            <ListItem disablePadding sx={{ display: 'block' }}>
+              <ListItemButton onClick={login}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <LoginIcon style={{ color: "000" }} />
+                </ListItemIcon>
+                <ListItemText style={{ color: "#000" }} primary="Login" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           </Tooltip>
