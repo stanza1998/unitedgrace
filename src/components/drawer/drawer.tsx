@@ -33,6 +33,9 @@ import { useAppContext } from '../Context';
 import { useNavigate } from 'react-router-dom';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { observer } from 'mobx-react-lite';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 
 
@@ -107,10 +110,13 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export const MiniDrawer = observer(() => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
+  const { store, api } = useAppContext();
+
+  const currentUser = store.auth.meJson;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -140,7 +146,7 @@ export default function MiniDrawer() {
     window.scroll(0, 0)
     navigate("/trinity")
   }
-  const store = () => {
+  const shop = () => {
     window.scroll(0, 0)
     navigate("/store")
   }
@@ -156,6 +162,17 @@ export default function MiniDrawer() {
     window.scroll(0, 0)
     navigate("/login")
   }
+
+
+
+  const logOut = async () => {
+    if (!window.confirm("Are you sure you want to log out?")) return;
+    await signOut(auth);
+    store.auth.logOut();
+    window.scroll(0, 0)
+    navigate("/login")
+  }
+
 
 
 
@@ -178,8 +195,10 @@ export default function MiniDrawer() {
           >
             <MenuIcon style={{ color: "#000" }} />
           </IconButton>
-          <div style={{ width: "100%", padding: "10px" }}>
+
+          <div style={{ width: "100%", padding: "4px" }}>
             <img style={{ float: "right", marginLeft: "10px", height: "50px" }} src={logo} alt="" />
+            {!currentUser ? <></> : <h5 onClick={logOut} className=" uk-margin-small-right" style={{ float: "left", marginLeft: "10px", marginTop: "1rem", textTransform: "uppercase", fontWeight: "700", cursor: "pointer" }} >{"Hello "} {currentUser?.fullName}</h5>}
           </div>
         </Toolbar>
       </AppBar>
@@ -309,7 +328,7 @@ export default function MiniDrawer() {
           </Tooltip>
           <Tooltip title="e-Store" placement="right-start">
             <ListItem disablePadding sx={{ display: 'block' }}>
-              <ListItemButton onClick={store}
+              <ListItemButton onClick={shop}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -351,28 +370,34 @@ export default function MiniDrawer() {
               </ListItemButton>
             </ListItem>
           </Tooltip>
-          <Tooltip title="Create Account" placement="right-start">
-            <ListItem disablePadding sx={{ display: 'block' }}>
-              <ListItemButton onClick={create}
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <AccountCircleIcon style={{ color: "000" }} />
-                </ListItemIcon>
-                <ListItemText style={{ color: "#000" }} primary="Create Account" sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          </Tooltip>
+          {!!currentUser ? <></>
+
+            :
+
+            <>
+              <Tooltip title="Create Account" placement="right-start">
+                <ListItem disablePadding sx={{ display: 'block' }}>
+                  <ListItemButton onClick={create}
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <AccountCircleIcon style={{ color: "000" }} />
+                    </ListItemIcon>
+                    <ListItemText style={{ color: "#000" }} primary="Create Account" sx={{ opacity: open ? 1 : 0 }} />
+                  </ListItemButton>
+                </ListItem>
+              </Tooltip>
+            </>}
           <Tooltip title="Login" placement="right-start">
             <ListItem disablePadding sx={{ display: 'block' }}>
               <ListItemButton onClick={login}
@@ -403,6 +428,19 @@ export default function MiniDrawer() {
         <Routing />
         <Footer />
       </Box>
+      <div id="modal-example" data-uk-modal>
+        <div className="uk-modal-dialog uk-modal-body">
+          <form onSubmit={logOut}>
+            <h2 className="uk-modal-title" style={{ textTransform: "uppercase" }}>Authentication</h2>
+            <p>Are you sure you want to log out</p>
+            <p className="uk-text-right">
+              <button className="uk-button uk-button-default uk-modal-close" type="button">No</button>
+              <button className="uk-button uk-button-primary" type='submit'>Yes</button>
+            </p>
+          </form>
+
+        </div>
+      </div>
     </Box>
   );
-}
+})
