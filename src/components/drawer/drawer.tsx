@@ -129,38 +129,47 @@ export const MiniDrawer = observer(() => {
   const home = () => {
     window.scroll(0, 0)
     navigate("/")
+    handleDrawerClose()
   }
   const about = () => {
     window.scroll(0, 0)
     navigate("/about")
+    handleDrawerClose()
   }
   const events = () => {
     window.scroll(0, 0)
     navigate("/events")
+    handleDrawerClose()
   }
   const testimonials = () => {
     window.scroll(0, 0)
     navigate("/testimonials")
+    handleDrawerClose()
   }
   const trinity = () => {
     window.scroll(0, 0)
-    navigate("/trinity")
+    navigate("/client-trinity")
+    handleDrawerClose()
   }
   const shop = () => {
     window.scroll(0, 0)
     navigate("/store")
+    handleDrawerClose()
   }
   const contact = () => {
     window.scroll(0, 0)
     navigate("/contact")
+    handleDrawerClose()
   }
   const create = () => {
     window.scroll(0, 0)
     navigate("/create")
+    handleDrawerClose()
   }
   const login = () => {
     window.scroll(0, 0)
     navigate("/login")
+    handleDrawerClose()
   }
 
 

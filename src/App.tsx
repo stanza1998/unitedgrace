@@ -24,6 +24,8 @@ import { Event } from './components/loggedIn/Events/event';
 import { Testimonial } from './components/loggedIn/Testimonials/testimonial';
 import { Settings } from './components/loggedIn/Settings/settings';
 import { Trinity } from './components/loggedIn/Trinity/trinity';
+import { AdminStore } from './components/loggedIn/Store/store';
+import { TrinityClient } from './components/sub_components/trinity/trinity';
 
 
 const store = new AppStore();
@@ -42,7 +44,7 @@ function App() {
             <Route path="event" element={<Event />} />
             <Route path="test" element={<Testimonial />} />
             <Route path="trinity" element={<Trinity />} />
-            <Route path="store" element={<Store />} />
+            <Route path="store" element={<AdminStore />} />
             <Route path="settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<MiniDrawer />} />
@@ -66,7 +68,7 @@ export const Routing = () => {
         <Route path="/about" element={<About />} />
         <Route path="/events" element={<Events />} />
         <Route path="/testimonials" element={<Testimonials />} />
-        <Route path="/trinity" element={<Trinity />} />
+        <Route path="/client-trinity" element={<TrinityClient />} />
         <Route path="/store" element={<Store />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/create" element={<CreateAccoount />} />
@@ -90,7 +92,7 @@ export const AdminRouting = () => {
       <Route path="event" element={<Event />} />
       <Route path="test" element={<Testimonial />} />
       <Route path="trinity" element={<Trinity />} />
-      <Route path="sustoreppliers" element={<Store />} />
+      <Route path="store" element={<AdminStore />} />
       <Route path="settings" element={<Settings />} />
     </Routes>
   )

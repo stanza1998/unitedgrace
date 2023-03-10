@@ -15,6 +15,7 @@ export class StoreCategoryModel implements IStoreCategory {
 
     constructor(private store: AppStore, category: IStoreCategory) {
         makeAutoObservable(this);
+        
         this.id = category.id;
         this.categoryName = category.categoryName;
         this.imgUrl = category.imgUrl;

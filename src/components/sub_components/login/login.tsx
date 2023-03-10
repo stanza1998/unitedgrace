@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import react, { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAppContext } from "../../Context";
+import { Loader } from "../../loader/loader";
 import "./login.scss"
 
 export const Login = observer(() => {
@@ -62,9 +63,15 @@ export const Login = observer(() => {
                             <div className="uk-margin div">
                                 <div className="uk-inline">
                                     <p data-uk-margin>
-                                        <button className="uk-button uk-button-primary" type="submit">Login</button>
+                                        <button className="uk-button uk-button-primary" type="submit">
+                                            Login
+                                            {loading && <span> <Loader /> </span>}
+                                        </button>
                                     </p>
                                 </div>
+                            </div>
+                            <div style={{ textAlign: "center" }}>
+                                {error && <span style={{ color: "red", alignItems: "center" }}  >Wrong email or password</span>}
                             </div>
                         </form>
                     </div>

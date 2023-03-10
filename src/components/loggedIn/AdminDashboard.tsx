@@ -103,21 +103,27 @@ export const AdminDashboard = observer(() => {
 
     const toSummary = () => {
         navigate("")
+        handleDrawerClose()
     }
     const toEvent = () => {
         navigate("event")
+        handleDrawerClose()
     }
     const toTest = () => {
         navigate("test")
+        handleDrawerClose()
     }
     const toTrinity = () => {
         navigate("trinity")
+        handleDrawerClose()
     }
     const toStore = () => {
         navigate("store")
+        handleDrawerClose()
     }
     const toSettings = () => {
         navigate("settings")
+        handleDrawerClose()
     }
 
 

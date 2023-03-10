@@ -1,4 +1,3 @@
-import react from "react"
 import {
     collection,
     CollectionReference,
@@ -10,12 +9,12 @@ import {
     query,
     setDoc,
 } from "firebase/firestore";
-
+import { ITestimonial } from "../../Interface/ITestimonials";
 import AppStore from "../../stores/AppStore";
 import { AppApi } from "../AppApi";
-import { IProduct } from "../../Interface/IProduct";
 
-export default class ProductApi {
+
+export default class TestimonialApi {
     collectionRef: CollectionReference;
 
     constructor(
@@ -30,17 +29,15 @@ export default class ProductApi {
     async getAll() {
         const q = query(this.collectionRef);
         const querySnapshot = await getDocs(q);
-        const items: IProduct[] = [];
+        const items: ITestimonial[] = [];
         querySnapshot.forEach((doc) => {
-            items.push({ ...doc.data(), id: doc.id } as IProduct);
+            items.push({ ...doc.data(), id: doc.id } as ITestimonial);
         });
 
-        this.store.product.load(items);
+        this.store.test.load(items);
     }
 
-    
-
-    async create(data: IProduct) {
+    async create(data: ITestimonial) {
         const docRef = doc(this.collectionRef);
         data.id = docRef.id;
         await setDoc(docRef, data, { merge: true });
@@ -64,13 +61,17 @@ export default class ProductApi {
     async delete(id: string) {
         const docRef = doc(this.collectionRef, id);
         await deleteDoc(docRef);
-        this.store.product.remove(id);
+        this.store.test.remove(id);
     }
 
-    async update(data: IProduct) {
+    async update(data: ITestimonial) {
         await setDoc(doc(this.collectionRef, data.id), data);
         return data;
-    }
+      }
+
+    
+
+    
 
 
 }

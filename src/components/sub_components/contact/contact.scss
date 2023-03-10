@@ -1,6 +1,6 @@
 .contact {
 
-    /* color:  red#000088, black#212d31, grey#343a40, white#eee  */
+    /* color:  red#00a2ff, black#212d31, grey#343a40, white#eee  */
     * {
         box-sizing: border-box;
     }
@@ -40,11 +40,11 @@
         display: block;
         width: 10%;
         padding-top: 10px;
-        border-bottom: 3px solid #000088;
+        border-bottom: 3px solid #00a2ff;
     }
 
     .highlight-text {
-        color: #000088;
+        color: #00a2ff;
     }
 
     .hightlight-contact-info {
@@ -87,7 +87,7 @@
 
     .form-input:focus,
     textarea:focus {
-        outline: 1.5px solid #000088;
+        outline: 1.5px solid #00a2ff;
     }
 
     .form-input,
@@ -153,8 +153,8 @@
     button,
     .submit-btn {
         background: transparent;
-        border: 1px solid #000088;
-        color: #000088;
+        border: 1px solid #00a2ff;
+        color: #00a2ff;
         border-radius: 15px;
         padding: 5px 20px;
         text-transform: uppercase;
@@ -164,13 +164,13 @@
     .submit-btn:hover,
     button:focus,
     .submit-btn:focus {
-        background: #000088;
+        background: #00a2ff;
         outline: 0;
         color: #eee;
     }
 
     .error {
-        color: #000088;
+        color: #00a2ff;
     }
 
 
